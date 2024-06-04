@@ -46,8 +46,12 @@
         return Array.from(elems).forEach(removeElem);
     }
 
+    function setHTML(elem, html) {
+        return (elem.innerHTML = html, elem);
+    }
+
     function wrap(elem) {
-        const wrapper = [setClasses, setText, setStyle, setStyles, setAttr, setAttrs, removeElem].reduce((wrapper, func) => (wrapper[func.name] = wrapCurry(func, elem), wrapper), {});
+        const wrapper = [setClasses, setText, setStyle, setStyles, setAttr, setAttrs, removeElem, setHTML].reduce((wrapper, func) => (wrapper[func.name] = wrapCurry(func, elem), wrapper), {});
 
         wrapper.return = function () {
             return elem;
